@@ -23,15 +23,15 @@ public class GestionarCuestionarioCUAdapter implements GestionarCuestionarioCUIn
         if(this.objCuestionarioGateway.existeCuestionarioPorTitulo(objCuestionario.getTitulo())){
             this.objFormateadorResultados.retornarRespuestaErrorEntidadExiste("Error, se encuentra en el sistema un cuestionario con el titulo");
         }else{
-            objCuestionarioCreado = this.objCuestionarioGateway.guardar(objCuestionarioCreado);
+            objCuestionarioCreado = this.objCuestionarioGateway.guardar(objCuestionario);
         }
         return objCuestionarioCreado;
     }
 
     @Override
     public List<Cuestionario> listar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listar'");
+        List<Cuestionario> listaObtenida = objCuestionarioGateway.listar();
+        return listaObtenida;
     }
     
 }

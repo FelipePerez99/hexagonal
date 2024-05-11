@@ -2,6 +2,10 @@ package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistenci
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,11 +34,9 @@ public class CuestionarioEntity {
     @Column(nullable = false, length = 50)
     private String titulo;
 
-    
     @Column(nullable = true, length = 256)
     private String descripcion;
 
-    
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},  mappedBy = "objCuestionario")
     private List<PreguntaEntity> preguntas;
 }

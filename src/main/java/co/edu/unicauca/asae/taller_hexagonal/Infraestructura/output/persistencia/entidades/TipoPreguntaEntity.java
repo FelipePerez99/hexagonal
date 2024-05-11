@@ -1,5 +1,6 @@
 package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -18,8 +19,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "TipoPreguntas")
 public class TipoPreguntaEntity {
     @Id
@@ -34,4 +35,7 @@ public class TipoPreguntaEntity {
 
     @OneToMany(mappedBy = "objTipoPregunta")
     private List<PreguntaEntity> preguntas;
+
+    
+
 }
