@@ -11,7 +11,9 @@ import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGes
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarCuestionario.mappers.CuestionarioMapperInfraestructuraDominio;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.FormateadorResultadosIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.GestionarCuestionarioGatewayIntPort;
+import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.GestionarDocenteGatewayIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.casosDeUso.GestionarCuestionarioCUAdapter;
+import co.edu.unicauca.asae.taller_hexagonal.dominio.casosDeUso.GestionarDocenteCUAdapter;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Cuestionario;
 
 @Configuration
@@ -23,6 +25,15 @@ public class BeanConfigurations {
         GestionarCuestionarioCUAdapter objGestionarCuestionarioCU = new GestionarCuestionarioCUAdapter(objGestionarCuestionarioGateway,
                 objFormateadorResultados);
         return objGestionarCuestionarioCU;
+    }
+
+    @Bean
+    public GestionarDocenteCUAdapter crearGestionarDocenteCUInt(
+            GestionarDocenteGatewayIntPort objDocenteGateway,
+            FormateadorResultadosIntPort objDocenteFormateadoResultados) {
+        GestionarDocenteCUAdapter objGestionarDocenteCU = new GestionarDocenteCUAdapter(objDocenteGateway,
+                objDocenteFormateadoResultados);
+        return objGestionarDocenteCU;
     }
 
 }

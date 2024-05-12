@@ -3,6 +3,7 @@ package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistenci
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
@@ -25,7 +26,7 @@ public class PreguntaEntity {
     @Column(nullable = false, length = 256)
     private String enunciado;
 
-    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idCuestionario")
     private CuestionarioEntity objCuestionario;

@@ -20,5 +20,11 @@ public class FomateadorResultadosImplAdapter implements FormateadorResultadosInt
         ReglaNegocioException objException = new ReglaNegocioException(mensaje);
         throw objException;
     }
+
+    @Override
+    public void retornarRespuestaErrorCorreoExiste(String mensaje) {
+        EntidadYaExisteException objException = new EntidadYaExisteException(mensaje);
+        throw objException;
+    }
     
 }
