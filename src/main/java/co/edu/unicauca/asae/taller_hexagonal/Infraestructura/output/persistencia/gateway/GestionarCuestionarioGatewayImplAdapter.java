@@ -1,6 +1,5 @@
 package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.gateway;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -41,6 +40,11 @@ public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestio
         System.out.println("/n");
         System.out.println("/n");
         Cuestionario objCuestionarioRespuesta = this.cuestionarioModelMapper.map(objCuestionarioRegistrado, Cuestionario.class);
+        System.out.println("/n");
+        System.out.println("/n");
+        System.out.println(objCuestionarioRespuesta.getTitulo() );
+        System.out.println("/n");
+        System.out.println("/n");
         return objCuestionarioRespuesta;
         //List<PreguntaEntity> preguntasEntity = new ArrayList<>();
         //objCuestionarioEntity.setPreguntas(preguntasEntity);

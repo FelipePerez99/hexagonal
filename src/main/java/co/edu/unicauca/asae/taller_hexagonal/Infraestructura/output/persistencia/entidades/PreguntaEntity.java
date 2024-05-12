@@ -2,9 +2,6 @@ package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistenci
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
