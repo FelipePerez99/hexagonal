@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.DocenteEntity;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.repositorios.DocenteRepositoryInt;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.GestionarDocenteGatewayIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Docente;
 
+@Service
 public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatewayIntPort{
 
     private final DocenteRepositoryInt objDocenteRepository;
