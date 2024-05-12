@@ -1,6 +1,5 @@
 package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;

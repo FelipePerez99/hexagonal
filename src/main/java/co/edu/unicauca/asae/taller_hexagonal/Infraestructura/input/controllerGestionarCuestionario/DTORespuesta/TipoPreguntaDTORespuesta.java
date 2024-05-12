@@ -2,7 +2,6 @@ package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGe
 
 import java.util.List;
 
-import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Pregunta;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
