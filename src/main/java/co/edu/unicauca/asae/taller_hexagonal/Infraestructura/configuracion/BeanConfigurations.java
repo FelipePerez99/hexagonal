@@ -25,41 +25,4 @@ public class BeanConfigurations {
         return objGestionarCuestionarioCU;
     }
 
-    /* 
-    @Bean
-    public CuestionarioMapperInfraestructuraDominio cuestionarioMapperInfraestructuraDominio() {
-        return new CuestionarioMapperInfraestructuraDominio() {
-            @Override
-            public Cuestionario mappearDePeticionACuestionario(CuestionarioDTOPeticion peticion) {
-                // Implementación de la lógica de mapeo de DTO a dominio
-                Cuestionario cuestionario = new Cuestionario();
-                // Aquí deberías implementar la lógica de cómo mapear los atributos del DTO a un objeto Cuestionario
-                cuestionario.setTitulo(peticion.getTitulo()); // Ejemplo de mapeo de un atributo
-                return cuestionario;
-            }
-
-            @Override
-            public CuestionarioDTORespuesta mappearDeCuestionarioARespuesta(Cuestionario objCuestionario) {
-                // Implementación de la lógica de mapeo de dominio a DTO de respuesta
-                CuestionarioDTORespuesta respuesta = new CuestionarioDTORespuesta();
-                // Aquí deberías implementar la lógica de cómo mapear los atributos de un objeto Cuestionario a un DTO de respuesta
-                respuesta.setTitulo(objCuestionario.getTitulo()); // Ejemplo de mapeo de un atributo
-                return respuesta;
-            }
-
-            @Override
-            public List<CuestionarioDTORespuesta> mappearDeCuestionariosARespuesta(List<Cuestionario> cuestionarios) {
-                // Implementación de la lógica de mapeo de una lista de cuestionarios a una lista de DTOs de respuesta
-                List<CuestionarioDTORespuesta> respuestas = new ArrayList<>();
-                for (Cuestionario cuestionario : cuestionarios) {
-                    // Aquí deberías implementar la lógica de cómo mapear cada objeto Cuestionario en la lista a un DTO de respuesta
-                    CuestionarioDTORespuesta respuesta = new CuestionarioDTORespuesta();
-                    respuesta.setTitulo(cuestionario.getTitulo()); // Ejemplo de mapeo de un atributo
-                    respuestas.add(respuesta);
-                }
-                return respuestas;
-            }
-        };
-    }*/
-
 }

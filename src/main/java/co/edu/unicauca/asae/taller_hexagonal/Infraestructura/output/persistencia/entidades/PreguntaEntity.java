@@ -26,7 +26,7 @@ public class PreguntaEntity {
     private String enunciado;
 
     
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "idCuestionario")
     private CuestionarioEntity objCuestionario;
 

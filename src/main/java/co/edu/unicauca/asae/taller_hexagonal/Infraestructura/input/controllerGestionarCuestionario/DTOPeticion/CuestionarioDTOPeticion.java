@@ -6,6 +6,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarCuestionario.DTORespuesta.PreguntaDTORespuesta;
+import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.PreguntaEntity;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Pregunta;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,7 +29,11 @@ public class CuestionarioDTOPeticion {
     @Size(min = 10, max = 500, message = "{cuestionario.descripcion.size}")
     private String descripcion;
 
-    @NotEmpty(message = "{cuestionario.preguntas.empty}")
-    @NotNull(message = "{cuestionario.preguntas.empty}")
-    private List<Pregunta> preguntas;
+    //@NotEmpty(message = "{cuestionario.preguntas.empty}")
+    //@NotNull(message = "{cuestionario.preguntas.empty}")
+    private List<PreguntaDTOPeticion> preguntas;
+
+    public void agregarPregunta(PreguntaDTOPeticion pregunta){
+        this.preguntas.add(pregunta);
+    }
 }

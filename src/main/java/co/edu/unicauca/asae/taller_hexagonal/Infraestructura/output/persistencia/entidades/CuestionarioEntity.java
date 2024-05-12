@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,6 +38,10 @@ public class CuestionarioEntity {
     @Column(nullable = true, length = 256)
     private String descripcion;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},  mappedBy = "objCuestionario")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},  mappedBy = "objCuestionario", fetch = FetchType.EAGER)
     private List<PreguntaEntity> preguntas;
+
+    public void agregarPregunta(PreguntaEntity pregunta){
+        this.preguntas.add(pregunta);
+    }
 }

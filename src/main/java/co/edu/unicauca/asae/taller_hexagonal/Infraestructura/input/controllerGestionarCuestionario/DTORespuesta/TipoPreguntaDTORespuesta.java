@@ -2,8 +2,6 @@ package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGe
 
 import java.util.List;
 
-import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarCuestionario.DTOPeticion.PreguntaDTOPeticion;
-import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.PreguntaEntity;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Pregunta;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,13 +12,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CuestionarioDTORespuesta {
-    private int idCuestionario;
-    private String titulo;
+public class TipoPreguntaDTORespuesta {
+    private int idTipoPregunta;
+    private String nombre;
     private String descripcion;
     private List<PreguntaDTORespuesta> preguntas;
-
-    public void agregarPregunta(PreguntaDTORespuesta pregunta){
-        this.preguntas.add(pregunta);
-    }
 }
