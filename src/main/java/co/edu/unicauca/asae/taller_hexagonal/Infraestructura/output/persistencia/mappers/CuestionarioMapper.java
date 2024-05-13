@@ -19,7 +19,7 @@ public class CuestionarioMapper {
    
       @Bean
       @Qualifier("cuestionarioMapper")
-      public ModelMapper mapper() {
+      public ModelMapper mapperCuestionario() {
       ModelMapper objMapper = new ModelMapper();
       
       // Mapeo de TipoPreguntaEntity a TipoPregunta en las preguntas

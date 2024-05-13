@@ -9,7 +9,13 @@ import javax.validation.constraints.NotNull;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Departamento;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Respuesta;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Telefono;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class DocenteDTORespuesta extends PersonaDTORespuesta {
 
     private String correo;
@@ -17,12 +23,6 @@ public class DocenteDTORespuesta extends PersonaDTORespuesta {
     private Telefono objTelefono;
     private List<Respuesta> respuestas;
     private List<Departamento> departamentos;
-    
-    public DocenteDTORespuesta() {
-        super();
-        departamentos = new ArrayList<Departamento>();
-        respuestas = new ArrayList<Respuesta>();
-    }
 
     public DocenteDTORespuesta(String tipoIdentificacion, String numeroIdentificacion, String nombres, String apellidos,
         String correo, String vinculacion, Telefono objTelefono) {
@@ -30,7 +30,7 @@ public class DocenteDTORespuesta extends PersonaDTORespuesta {
         this.correo = correo;
         this.vinculacion = vinculacion;
         this.objTelefono = objTelefono;
-        departamentos = new ArrayList<Departamento>();
-        respuestas = new ArrayList<Respuesta>();
+        this.departamentos = new ArrayList<Departamento>();
+        this.respuestas = new ArrayList<Respuesta>();
     }
 }

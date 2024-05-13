@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -24,14 +25,14 @@ public class TelefonoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTelefono;
 
-    @Column(nullable = false, length = 20)
+    @Column(length = 20)
     private String tipoTelefono;
 
-    @Column(unique = true, nullable = false, length = 20)
+    @Column(unique = true, length = 20)
     private String numero;
 
     @OneToOne
-    @JoinColumn(name = "idPregunta")
+    @JoinColumn(name = "idDocente")
     private DocenteEntity objDocente;
 
 }
