@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.DocenteEntity;
@@ -20,15 +21,15 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     
 
     public GestionarDocenteGatewayImplAdapter(DocenteRepositoryInt objDocenteRepository,
-            ModelMapper docenteModelMapper) {
+        @Qualifier("docenteMapper") ModelMapper docenteModelMapper) {
         this.objDocenteRepository = objDocenteRepository;
         this.docenteModelMapper = docenteModelMapper;
     }
 
     @Override
     public Docente guardar(Docente objDocente) {
-         DocenteEntity objDocenteEntity = this.docenteModelMapper.map(objDocente, DocenteEntity.class);
-        //objDocenteEntity.getObjDireccion().setObjPersona(objDocenteEntity);
+        DocenteEntity objDocenteEntity = this.docenteModelMapper.map(objDocente, DocenteEntity.class);
+        objDocenteEntity.getObjTelefono().setObjDocente(objDocenteEntity);
         DocenteEntity objDocenteEntityRegistrado = this.objDocenteRepository.save(objDocenteEntity);
         Docente objDocenteRespuesta = this.docenteModelMapper.map(objDocenteEntityRegistrado, Docente.class);
         return objDocenteRespuesta;

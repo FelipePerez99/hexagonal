@@ -11,6 +11,8 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -39,6 +41,8 @@ public class DocenteEntity extends PersonaEntity {
 
     public DocenteEntity() {
         super();
+        respuestas = new ArrayList<RespuestaEntity>();
+        departamentos = new ArrayList<DepartamentoEntity>();
     }
 
     public DocenteEntity(String tipoIdentificacion, String numeroIdentificacion, String nombres,
