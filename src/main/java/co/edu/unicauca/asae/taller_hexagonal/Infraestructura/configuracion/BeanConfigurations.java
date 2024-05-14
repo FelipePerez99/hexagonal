@@ -6,8 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.FormateadorResultadosIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.GestionarCuestionarioGatewayIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.GestionarDocenteGatewayIntPort;
+import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.GestionarRespuestaGatewayIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.casosDeUso.GestionarCuestionarioCUAdapter;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.casosDeUso.GestionarDocenteCUAdapter;
+import co.edu.unicauca.asae.taller_hexagonal.dominio.casosDeUso.GestionarRespuestaCUAdapter;
 
 @Configuration
 public class BeanConfigurations {
@@ -28,5 +30,15 @@ public class BeanConfigurations {
                 objDocenteFormateadoResultados);
         return objGestionarDocenteCU;
     }
+
+    @Bean
+    public GestionarRespuestaCUAdapter crearGestionarRespuestaCUInt(
+            GestionarRespuestaGatewayIntPort objRespuestaGateway,
+            FormateadorResultadosIntPort objRespuestaFormateadoResultados) {
+        GestionarRespuestaCUAdapter objGestionarRespuestaCU = new GestionarRespuestaCUAdapter(objRespuestaGateway,
+                objRespuestaFormateadoResultados);
+        return objGestionarRespuestaCU;
+    }
+
 
 }

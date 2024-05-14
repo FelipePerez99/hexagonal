@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 public class EntidadYaExisteException extends RuntimeException{
-    private final String llaveMensaje;
+  private final String llaveMensaje;
   private final String codigo;
 
   public EntidadYaExisteException(CodigoError code) {

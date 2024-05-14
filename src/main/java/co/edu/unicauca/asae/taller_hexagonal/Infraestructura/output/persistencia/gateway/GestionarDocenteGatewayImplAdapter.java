@@ -9,10 +9,8 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.CuestionarioEntity;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.DepartamentoEntity;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.DocenteEntity;
-import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.PreguntaEntity;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.repositorios.DepartamentoRepositoryInt;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.repositorios.DocenteRepositoryInt;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.GestionarDocenteGatewayIntPort;

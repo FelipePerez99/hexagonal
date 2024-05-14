@@ -15,9 +15,9 @@ public class GestionarDocenteCUAdapter implements GestionarDocenteCUIntPort {
 
     
 
-    public GestionarDocenteCUAdapter(GestionarDocenteGatewayIntPort obDocenteGatewayInt,
+    public GestionarDocenteCUAdapter(GestionarDocenteGatewayIntPort objDocenteGatewayInt,
         FormateadorResultadosIntPort objFormateadorResultadosInt) {
-        this.objDocenteGatewayInt = obDocenteGatewayInt;
+        this.objDocenteGatewayInt = objDocenteGatewayInt;
         this.objFormateadorResultadosInt = objFormateadorResultadosInt;
     }
 

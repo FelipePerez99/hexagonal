@@ -26,5 +26,11 @@ public class FomateadorResultadosImplAdapter implements FormateadorResultadosInt
         EntidadYaExisteException objException = new EntidadYaExisteException(mensaje);
         throw objException;
     }
+
+    @Override
+    public void retornarRespuestaErrorCuestionarioRespondido(String mensaje) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'retornarRespuestaErrorCuestionarioRespondido'");
+    }
     
 }
