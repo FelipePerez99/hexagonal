@@ -17,7 +17,6 @@ import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGes
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarDocente.DTORespuesta.DocenteDTORespuesta;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarDocente.mappers.DocenteMapperInfraestructuraDominio;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.input.GestionarDocenteCUIntPort;
-import co.edu.unicauca.asae.taller_hexagonal.dominio.casosDeUso.GestionarDocenteCUAdapter;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Docente;
 import lombok.RequiredArgsConstructor;
 

@@ -2,6 +2,7 @@ package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGe
 
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -25,8 +26,8 @@ public class CuestionarioDTOPeticion {
     @Size(min = 10, max = 500, message = "{cuestionario.descripcion.size}")
     private String descripcion;
 
-    //@NotEmpty(message = "{cuestionario.preguntas.empty}")
-    //@NotNull(message = "{cuestionario.preguntas.empty}")
+    @NotEmpty(message = "{cuestionario.preguntas.empty}")
+    @NotNull(message = "{cuestionario.preguntas.empty}")
     private List<PreguntaDTOPeticion> preguntas;
 
     public void agregarPregunta(PreguntaDTOPeticion pregunta){

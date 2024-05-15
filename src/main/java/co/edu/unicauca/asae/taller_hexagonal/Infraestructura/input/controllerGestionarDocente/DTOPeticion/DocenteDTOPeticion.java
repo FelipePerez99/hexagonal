@@ -19,8 +19,9 @@ public class DocenteDTOPeticion extends PersonaDTOPeticion {
     @Email(message = "{docente.correo.format}")
     private String correo;
 
-    @NotNull(message = "{docente.vinculacion.emply}")
+    @NotNull(message = "{docente.vinculacion.empty}")
     private String vinculacion;
+
     private Telefono objTelefono;
     private List<Respuesta> respuestas;
     private List<Departamento> departamentos;

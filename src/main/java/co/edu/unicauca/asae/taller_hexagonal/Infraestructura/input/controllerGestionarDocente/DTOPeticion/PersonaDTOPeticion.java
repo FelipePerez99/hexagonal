@@ -13,12 +13,14 @@ import lombok.Setter;
 public class PersonaDTOPeticion {
     private int idPersona;
     private String tipoIdentificacion;
-    @NotNull(message = "{docente.codigo.emply}")
-    @Size(min = 5, max = 10, message = "{docente.codigo.size}")
+    @NotNull(message = "{docente.identificacion.emply}")
+    @Size(min = 5, max = 10, message = "{docente.identificacion.size}")
     private String numeroIdentificacion;
+
     @NotNull(message = "{docente.nombre.emply}")
     @Size(min = 5, max = 45, message = "{docente.nombre.size}")
     private String nombres;
+
     @NotNull(message = "{docente.apellido.emply}")
     @Size(min = 5, max = 45, message = "{docente.apellido.size}")
     private String apellidos;

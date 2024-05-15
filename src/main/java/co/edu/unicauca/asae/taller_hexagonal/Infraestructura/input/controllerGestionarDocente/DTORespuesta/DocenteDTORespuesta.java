@@ -3,8 +3,6 @@ package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGe
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Departamento;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Respuesta;
