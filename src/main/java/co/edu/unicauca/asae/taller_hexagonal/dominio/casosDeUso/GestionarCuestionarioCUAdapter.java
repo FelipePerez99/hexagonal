@@ -33,5 +33,11 @@ public class GestionarCuestionarioCUAdapter implements GestionarCuestionarioCUIn
         List<Cuestionario> listaObtenida = objCuestionarioGateway.listar();
         return listaObtenida;
     }
+
+    @Override
+    public List<Cuestionario> consultarPorTitulo(String titulo) {
+        List<Cuestionario> listaObtenida = objCuestionarioGateway.consultarPorTitulo(titulo);
+        return listaObtenida;
+    }
     
 }

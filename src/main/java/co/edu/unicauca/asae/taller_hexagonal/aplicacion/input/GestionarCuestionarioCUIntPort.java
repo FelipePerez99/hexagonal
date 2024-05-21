@@ -7,4 +7,5 @@ import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Cuestionario;
 public interface GestionarCuestionarioCUIntPort {
     public Cuestionario crear(Cuestionario objCuestionario);
     public List<Cuestionario> listar(); 
+    public List<Cuestionario> consultarPorTitulo(String titulo);
 }

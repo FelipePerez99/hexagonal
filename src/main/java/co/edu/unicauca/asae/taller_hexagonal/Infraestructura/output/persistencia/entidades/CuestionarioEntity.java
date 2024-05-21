@@ -34,7 +34,7 @@ public class CuestionarioEntity {
     @Column(nullable = true, length = 256)
     private String descripcion;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},  mappedBy = "objCuestionario", fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},  mappedBy = "objCuestionario", fetch = FetchType.LAZY)
     private List<PreguntaEntity> preguntas;
 
     public void agregarPregunta(PreguntaEntity pregunta){

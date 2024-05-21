@@ -15,6 +15,7 @@ import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.repositorios.TipoPreguntaRepositoryInt;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.GestionarCuestionarioGatewayIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Cuestionario;
+import jakarta.transaction.Transactional;
 
 @Service
 public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestionarioGatewayIntPort  {
@@ -31,6 +32,7 @@ public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestio
         this.objTipoPreguntaRepository = objTipoPreguntaRepository;
     }
 
+    @Transactional
     @Override
     public Cuestionario guardar(Cuestionario objCuestionario) {
         CuestionarioEntity objCuestionarioEntity = this.cuestionarioModelMapper.map(objCuestionario, CuestionarioEntity.class);
@@ -42,9 +44,33 @@ public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestio
 
     @Override
     public List<Cuestionario> listar() {
+        System.out.println("#########################################Listar#########################################");
         Iterable<CuestionarioEntity> lista = this.objCuestionarioRepository.findAll();
+        for (CuestionarioEntity cuestionarioEntity : lista) {
+            Iterable<PreguntaEntity> listaPreguntas= cuestionarioEntity.getPreguntas();
+            listaPreguntas.forEach(pregunta -> pregunta.getObjTipoPregunta());
+        }
+        System.out.println("############################################");
+        System.out.println(lista.iterator().next().getPreguntas().get(0).getEnunciado());
+        System.out.println(lista.iterator().next().getPreguntas().get(0).getObjTipoPregunta().getNombre());
         List<Cuestionario> listaObtenida = this.cuestionarioModelMapper.map(lista, new TypeToken<List<Cuestionario>>() {
         }.getType());
+
+        return listaObtenida;
+    }
+
+    @Override
+    public List<Cuestionario> consultarPorTitulo(String titulo) {
+        System.out.println("#########################################Listar#########################################");
+        Iterable<CuestionarioEntity> lista = this.objCuestionarioRepository.findByTituloContainingIgnoreCaseOrderByIdCuestionarioDesc(titulo);
+        System.out.println("############################################");
+        for (CuestionarioEntity cuestionarioEntity : lista) {
+            Iterable<PreguntaEntity> listaPreguntas= cuestionarioEntity.getPreguntas();
+            listaPreguntas.forEach(pregunta -> pregunta.getObjTipoPregunta());
+        }
+        List<Cuestionario> listaObtenida = this.cuestionarioModelMapper.map(lista, new TypeToken<List<Cuestionario>>() {
+        }.getType());
+
         return listaObtenida;
     }
 

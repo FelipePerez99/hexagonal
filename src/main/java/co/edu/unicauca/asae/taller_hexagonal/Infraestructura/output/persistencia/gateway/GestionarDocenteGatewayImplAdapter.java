@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.DepartamentoEntity;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.DocenteEntity;
@@ -23,23 +24,31 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     private final DepartamentoRepositoryInt objDepartamentoRepository;
     private final ModelMapper docenteModelMapper;
 
-    public GestionarDocenteGatewayImplAdapter(DocenteRepositoryInt objDocenteRepository, DepartamentoRepositoryInt objDepartamentoRepository,
+    public GestionarDocenteGatewayImplAdapter(DocenteRepositoryInt objDocenteRepository,
+            DepartamentoRepositoryInt objDepartamentoRepository,
             @Qualifier("docenteMapper") ModelMapper docenteModelMapper) {
         this.objDocenteRepository = objDocenteRepository;
         this.docenteModelMapper = docenteModelMapper;
         this.objDepartamentoRepository = objDepartamentoRepository;
     }
 
+    @Transactional
     @Override
     public Docente guardar(Docente objDocente) {
         DocenteEntity objDocenteEntity = this.docenteModelMapper.map(objDocente, DocenteEntity.class);
         objDocenteEntity.getObjTelefono().setObjDocente(objDocenteEntity);
+        System.out.println("*********************************************************");
+        System.out.println(objDocenteEntity.getObjTelefono().getNumero());
+        System.out.println(objDocenteEntity.getObjTelefono().getTipoTelefono());
         objDocenteEntity.setDepartamentos(consultarDepartamentos(objDocenteEntity.getDepartamentos()));
         Docente objDocenteRespuesta = null;
         if (objDocenteEntity.getObjTelefono().getNumero() != null
                 && objDocenteEntity.getObjTelefono().getTipoTelefono() != null) {
             System.out.println(objDocenteEntity.getObjTelefono().getNumero());
             DocenteEntity objDocenteEntityRegistrado = this.objDocenteRepository.save(objDocenteEntity);
+            System.out.println("*********************dfhdfghdfgh************************************");
+            System.out.println(objDocenteEntityRegistrado.getObjTelefono().getNumero());
+            System.out.println(objDocenteEntityRegistrado.getObjTelefono().getTipoTelefono());
             objDocenteRespuesta = this.docenteModelMapper.map(objDocenteEntityRegistrado, Docente.class);
         }
 
@@ -64,11 +73,12 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
         return this.objDocenteRepository.existeDocentePorIdentificacion(identificacion) == 1;
     }
 
-    private List<DepartamentoEntity> consultarDepartamentos(List<DepartamentoEntity> departamentos){
+    private List<DepartamentoEntity> consultarDepartamentos(List<DepartamentoEntity> departamentos) {
         List<DepartamentoEntity> departamentosResultado = new ArrayList<>();
-        for(DepartamentoEntity departamento : departamentos){
-            Optional<DepartamentoEntity> resultadoBusqueda = objDepartamentoRepository.findById(departamento.getIdDepartamento());
-            if(!resultadoBusqueda.isEmpty()){
+        for (DepartamentoEntity departamento : departamentos) {
+            Optional<DepartamentoEntity> resultadoBusqueda = objDepartamentoRepository
+                    .findById(departamento.getIdDepartamento());
+            if (!resultadoBusqueda.isEmpty()) {
                 departamentosResultado.add(resultadoBusqueda.get());
             }
         }

@@ -8,9 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarCuestionario.DTOPeticion.CuestionarioDTOPeticion;
@@ -43,6 +45,14 @@ public class CuestionarioRestController {
     public ResponseEntity<List<CuestionarioDTORespuesta>> listar() {
         ResponseEntity<List<CuestionarioDTORespuesta>> objRespuesta = new ResponseEntity<List<CuestionarioDTORespuesta>>(
                 objMapper.mappearDeCuestionariosARespuesta(this.objCuestionarioCUInt.listar()),
+                HttpStatus.OK);
+        return objRespuesta;
+    }
+
+    @GetMapping("/cuestionarios/titulo")
+    public ResponseEntity<List<CuestionarioDTORespuesta>> consultarPorTitulo(@RequestParam String titulo) {
+        ResponseEntity<List<CuestionarioDTORespuesta>> objRespuesta = new ResponseEntity<List<CuestionarioDTORespuesta>>(
+                objMapper.mappearDeCuestionariosARespuesta(this.objCuestionarioCUInt.consultarPorTitulo(titulo)),
                 HttpStatus.OK);
         return objRespuesta;
     }

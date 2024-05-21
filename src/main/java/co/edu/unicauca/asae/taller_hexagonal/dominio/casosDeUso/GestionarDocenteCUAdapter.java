@@ -2,7 +2,6 @@ package co.edu.unicauca.asae.taller_hexagonal.dominio.casosDeUso;
 
 import java.util.List;
 
-import co.edu.unicauca.asae.taller_hexagonal.aplicacion.input.GestionarCuestionarioCUIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.input.GestionarDocenteCUIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.FormateadorResultadosIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.output.GestionarDocenteGatewayIntPort;

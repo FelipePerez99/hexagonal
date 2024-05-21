@@ -6,9 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.DocenteEntity;
 
 public interface DocenteRepositoryInt extends CrudRepository<DocenteEntity, Integer> {
-    @Query("SELECT count(*) FROM DocenteEntity p  WHERE p.numeroIdentificacion=?1")
+    @Query("SELECT count(*) FROM DocenteEntity d WHERE d.numeroIdentificacion=:numeroIdentificacion")
     Integer existeDocentePorIdentificacion(String numeroIdentificacion);
 
-    @Query("SELECT count(*) FROM DocenteEntity p  WHERE LOWER(p.correo) = LOWER(:correo)")
+    @Query("SELECT count(*) FROM DocenteEntity d WHERE LOWER(d.correo) = LOWER(:correo)")
     Integer existeDocentePorCorreo(String correo);
 }
