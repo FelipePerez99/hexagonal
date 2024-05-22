@@ -5,6 +5,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.DocenteEntity;
+import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Docente;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,9 +22,9 @@ public class TelefonoDTOPeticion {
 
     @Pattern(regexp = "[3][0-9]")
     private String numero;
-    private DocenteEntity objDocente;
+    private Docente objDocente;
 
-    public TelefonoDTOPeticion(int idTelefono, String tipoTelefono, String numero, DocenteEntity objDocente) {
+    public TelefonoDTOPeticion(int idTelefono, String tipoTelefono, String numero, Docente objDocente) {
         this.idTelefono = idTelefono;
         this.tipoTelefono = tipoTelefono;
         this.numero = numero;

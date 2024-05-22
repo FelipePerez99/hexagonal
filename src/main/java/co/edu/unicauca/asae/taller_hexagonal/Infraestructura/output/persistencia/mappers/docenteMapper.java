@@ -20,8 +20,8 @@ public class DocenteMapper {
       ModelMapper objMapper = new ModelMapper();
 
       // Mapeo de TelefonoEntity a Pregunta en la lista de preguntas del Telefono
-      //TypeMap<TelefonoEntity, Telefono> TelefonoMap = objMapper.emptyTypeMap(TelefonoEntity.class, Telefono.class);
-      //TelefonoMap.addMapping(TelefonoEntity::getObjDocente, Telefono::setObjDocente).implicitMappings();
+      TypeMap<TelefonoEntity, Telefono> TelefonoMap = objMapper.emptyTypeMap(TelefonoEntity.class, Telefono.class);
+      TelefonoMap.addMappings(m-> m.skip(Telefono::setObjDocente)).implicitMappings();
 
       // Mapeo de DocenteEntity a Docente
       TypeMap<DocenteEntity, Docente> docenteMap = objMapper.emptyTypeMap(DocenteEntity.class, Docente.class);

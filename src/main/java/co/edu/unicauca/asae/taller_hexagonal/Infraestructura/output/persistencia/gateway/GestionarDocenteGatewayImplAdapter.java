@@ -37,20 +37,10 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     public Docente guardar(Docente objDocente) {
         DocenteEntity objDocenteEntity = this.docenteModelMapper.map(objDocente, DocenteEntity.class);
         objDocenteEntity.getObjTelefono().setObjDocente(objDocenteEntity);
-        System.out.println("*********************************************************");
-        System.out.println(objDocenteEntity.getObjTelefono().getNumero());
-        System.out.println(objDocenteEntity.getObjTelefono().getTipoTelefono());
-        objDocenteEntity.setDepartamentos(consultarDepartamentos(objDocenteEntity.getDepartamentos()));
+        //objDocenteEntity.setDepartamentos(consultarDepartamentos(objDocenteEntity.getDepartamentos()));
         Docente objDocenteRespuesta = null;
-        if (objDocenteEntity.getObjTelefono().getNumero() != null
-                && objDocenteEntity.getObjTelefono().getTipoTelefono() != null) {
-            System.out.println(objDocenteEntity.getObjTelefono().getNumero());
-            DocenteEntity objDocenteEntityRegistrado = this.objDocenteRepository.save(objDocenteEntity);
-            System.out.println("*********************dfhdfghdfgh************************************");
-            System.out.println(objDocenteEntityRegistrado.getObjTelefono().getNumero());
-            System.out.println(objDocenteEntityRegistrado.getObjTelefono().getTipoTelefono());
-            objDocenteRespuesta = this.docenteModelMapper.map(objDocenteEntityRegistrado, Docente.class);
-        }
+        DocenteEntity objDocenteEntityRegistrado = this.objDocenteRepository.save(objDocenteEntity);
+        objDocenteRespuesta = this.docenteModelMapper.map(objDocenteEntityRegistrado, Docente.class);
 
         return objDocenteRespuesta;
     }

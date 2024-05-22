@@ -15,6 +15,10 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Departamento;
+import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Respuesta;
+import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Telefono;
+
 @Entity
 @Getter
 @Setter
@@ -45,12 +49,15 @@ public class DocenteEntity extends PersonaEntity {
         departamentos = new ArrayList<DepartamentoEntity>();
     }
 
-    public DocenteEntity(String tipoIdentificacion, String numeroIdentificacion, String nombres,
-        String apellidos, String correo, String vinculacion) {
-
+    public DocenteEntity(String tipoIdentificacion, String numeroIdentificacion, String nombres, String apellidos,
+            String correo, String vinculacion, TelefonoEntity objTelefono) {
         super(tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
         this.correo = correo;
         this.vinculacion = vinculacion;
-       
-    }  
+        this.objTelefono = objTelefono;
+        departamentos = new ArrayList<DepartamentoEntity>();
+        respuestas = new ArrayList<RespuestaEntity>();
+    }
+
+    
 }

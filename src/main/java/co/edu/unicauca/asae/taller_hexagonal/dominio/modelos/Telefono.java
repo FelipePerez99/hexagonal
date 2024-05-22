@@ -12,5 +12,5 @@ public class Telefono {
     private int idTelefono;
     private String tipoTelefono;
     private String numero;
-    private DocenteEntity objDocente;
+    private Docente objDocente;
 }

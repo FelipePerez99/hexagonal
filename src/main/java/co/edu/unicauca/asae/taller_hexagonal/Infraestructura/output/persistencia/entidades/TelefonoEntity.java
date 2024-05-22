@@ -21,8 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "Telefonos")
 public class TelefonoEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id    
     private int idTelefono;
 
     @Column(length = 20)
@@ -33,6 +32,7 @@ public class TelefonoEntity {
 
     @OneToOne
     @JoinColumn(name = "idDocente")
+    @MapsId
     private DocenteEntity objDocente;
 
 }
