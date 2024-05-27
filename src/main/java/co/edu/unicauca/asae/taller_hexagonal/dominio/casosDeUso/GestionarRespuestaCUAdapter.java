@@ -36,7 +36,7 @@ public class GestionarRespuestaCUAdapter implements GestionarRespuestaCUIntPort{
 
     @Override
     public Peticion consultarRespuestaDocente(Cuestionario objCuestionario, Docente objDocente) {
-        Peticion peticionObtenida = objRespuestaGatewayInt.consultarPeticion(objDocente, objCuestionario);
+        Peticion peticionObtenida = objRespuestaGatewayInt.respuestaCuestionarioPorProfesor(objDocente, objCuestionario);
         //for(Respuesta respuesta : respuestas){
         //    Peticion peticion = new Peticion();
         //    peticion.setCuestionarioDTOPeticion(null);

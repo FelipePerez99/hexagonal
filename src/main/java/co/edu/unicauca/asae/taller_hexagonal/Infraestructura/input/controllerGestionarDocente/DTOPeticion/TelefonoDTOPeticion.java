@@ -20,7 +20,7 @@ public class TelefonoDTOPeticion {
     @Size(min = 5, max = 15, message = "{telefono.tipoTelefono.size}")
     private String tipoTelefono;
 
-    @Pattern(regexp = "[3][0-9]")
+    @Pattern(message = "El número debe empezar por 3 y contener 10 digitos", regexp = "3\\d{9}")
     private String numero;
     private Docente objDocente;
 

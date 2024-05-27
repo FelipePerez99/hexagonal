@@ -73,9 +73,10 @@ public class GestionRespuestaGatewayImplAdapter implements GestionarRespuestaGat
     }
 
     @Override
-    public Peticion consultarPeticion(Docente docente, Cuestionario cuestionario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'consultarPeticion'");
+    public Peticion respuestaCuestionarioPorProfesor(Docente docente, Cuestionario cuestionario) {
+        Optional<CuestionarioEntity> objCuestionario = objCuestionarioRepository.findById(cuestionario.getIdCuestionario());
+        System.out.println(objCuestionario.get().getPreguntas().get(0).getEnunciado());
+        return null;
     }
 
     @Override

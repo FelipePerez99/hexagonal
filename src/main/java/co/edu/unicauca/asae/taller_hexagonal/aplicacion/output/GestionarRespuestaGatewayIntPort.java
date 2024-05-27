@@ -10,6 +10,6 @@ import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Respuesta;
 public interface GestionarRespuestaGatewayIntPort {
     public List<Respuesta> guardar(Peticion objPeticion);
     public List<Peticion> listar();
-    public Peticion consultarPeticion(Docente docente, Cuestionario cuestionario);
+    public Peticion respuestaCuestionarioPorProfesor(Docente docente, Cuestionario cuestionario);
     public boolean respuestaMismoCuestionario(Cuestionario cuestionario, Docente docente);
 }

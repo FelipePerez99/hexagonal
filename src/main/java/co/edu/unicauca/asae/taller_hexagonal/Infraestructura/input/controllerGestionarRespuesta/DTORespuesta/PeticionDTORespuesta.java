@@ -17,5 +17,5 @@ import lombok.Setter;
 public class PeticionDTORespuesta {
     private DocenteDTOPeticion docente;
     private CuestionarioDTOPeticion cuestionario;
-    private List<PreguntaDTOPeticion> listaPreguntas;
+    //private List<PreguntaDTOPeticion> listaPreguntas;
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarCuestionario.DTOPeticion.CuestionarioDTOPeticion;
+import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarCuestionario.DTORespuesta.CuestionarioDTORespuesta;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarCuestionario.mappers.CuestionarioMapperInfraestructuraDominio;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarDocente.DTOPeticion.DocenteDTOPeticion;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarDocente.mappers.DocenteMapperInfraestructuraDominio;
@@ -23,6 +24,7 @@ import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGes
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarRespuesta.DTORespuesta.RespuestaDTORespuesta;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarRespuesta.mappers.PeticionMapperInfraestructuraDominio;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarRespuesta.mappers.RespuestaMapperInfraestructuraDominio;
+import co.edu.unicauca.asae.taller_hexagonal.aplicacion.input.GestionarCuestionarioCUIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.aplicacion.input.GestionarRespuestaCUIntPort;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Peticion;
 import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Respuesta;
@@ -39,6 +41,7 @@ public class RespuestaRestController {
     private final DocenteMapperInfraestructuraDominio objMapperDocente;
     private final PeticionMapperInfraestructuraDominio objMapperPeticion;
     private final RespuestaMapperInfraestructuraDominio objMapperRespuesta;
+    private final GestionarCuestionarioCUIntPort objCuestionarioCUInt;
 
     @PostMapping("/respuesta")
     public ResponseEntity<List<RespuestaDTORespuesta>> create(@Valid @RequestBody PeticionDTO objPeticion) {
@@ -56,6 +59,12 @@ public class RespuestaRestController {
                 HttpStatus.OK);
         return objPeticion;
     }
+
+    @GetMapping("/respuestaPorProfesor")
+    public ResponseEntity<PeticionDTORespuesta> respuestaPorProfesor(@RequestParam String idDocente, @RequestBody CuestionarioDTOPeticion cuestionario) {
+        return null;
+    }
+    
     
 }
 
