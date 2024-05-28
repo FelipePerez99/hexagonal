@@ -3,7 +3,6 @@ package co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGe
 import java.util.List;
 
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarCuestionario.DTOPeticion.CuestionarioDTOPeticion;
-import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarCuestionario.DTOPeticion.PreguntaDTOPeticion;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.input.controllerGestionarDocente.DTOPeticion.DocenteDTOPeticion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

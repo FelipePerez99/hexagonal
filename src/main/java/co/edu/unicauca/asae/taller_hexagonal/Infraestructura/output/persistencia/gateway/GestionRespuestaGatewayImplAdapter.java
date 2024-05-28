@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.CuestionarioEntity;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.DocenteEntity;
+import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.PeticionEntity;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.PreguntaEntity;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.entidades.RespuestaEntity;
 import co.edu.unicauca.asae.taller_hexagonal.Infraestructura.output.persistencia.repositorios.CuestionarioRepositoryInt;
@@ -55,7 +56,6 @@ public class GestionRespuestaGatewayImplAdapter implements GestionarRespuestaGat
         List<RespuestaEntity> respuestasEntity = mapearRespuestasARespuestasEntity(
                 obtenerRespuestas(objPeticion.getListaPreguntas()));
         respuestasEntity = setDocenteAndPreguntaInRespuesta(respuestasEntity,objPeticion.getDocente(), preguntasEntity);
-        System.out.println("--------------------");
         objDocenteEntity.setRespuestas(respuestasEntity);
         List<Respuesta> respuestasResponse = new ArrayList<>();
         for (RespuestaEntity respuesta : respuestasEntity) {
@@ -66,6 +66,8 @@ public class GestionRespuestaGatewayImplAdapter implements GestionarRespuestaGat
         return respuestasResponse;
     }
 
+    
+
     @Override
     public List<Peticion> listar() {
         // TODO Auto-generated method stub
@@ -73,14 +75,36 @@ public class GestionRespuestaGatewayImplAdapter implements GestionarRespuestaGat
     }
 
     @Override
-    public Peticion respuestaCuestionarioPorProfesor(Docente docente, Cuestionario cuestionario) {
+    public Peticion respuestaCuestionarioPorProfesor(Cuestionario cuestionario, String idDocente) {
+        System.out.println("----------consulta cuestionario------------");
         Optional<CuestionarioEntity> objCuestionario = objCuestionarioRepository.findById(cuestionario.getIdCuestionario());
-        System.out.println(objCuestionario.get().getPreguntas().get(0).getEnunciado());
-        return null;
+        
+        System.out.println("----------------------");
+        for (PreguntaEntity pregunta : objCuestionario.get().getPreguntas()) {
+            System.out.println("----------------------");
+            for (RespuestaEntity respuesta : pregunta.getRespuestas()) {
+                if(respuesta.getObjDocente().getIdPersona() == Integer.parseInt(idDocente)){
+                    List<RespuestaEntity> listRespuesta = new ArrayList<>();
+                    listRespuesta.add(respuesta);
+                    pregunta.setRespuestas(listRespuesta);
+                }
+            }
+        }
+        PeticionEntity peticion = new PeticionEntity(objDocenteRepository.findById(Integer.parseInt(idDocente)).get(), objCuestionario.get(), null);
+        /*Peticion peticionRespuesta = new Peticion(
+            docenteModelMapper.map(objDocenteRepository.findById(Integer.parseInt(idDocente)).get(),Docente.class),
+            cuestionarioModelMapper.map(objCuestionario.get(), Cuestionario.class),
+            null
+        );*/
+        Peticion peticionRespuesta = respuestaModelMapper.map(peticion, Peticion.class);
+        return peticionRespuesta;
     }
 
     @Override
     public boolean respuestaMismoCuestionario(Cuestionario cuestionario, Docente docente) {
+        if(objRespuestaRepository.docenteYaRespondioCuestionario(docente.getIdPersona(), cuestionario.getIdCuestionario()) != 0){
+            return true;
+        }
         return false;
     }
 
@@ -104,7 +128,6 @@ public class GestionRespuestaGatewayImplAdapter implements GestionarRespuestaGat
                 System.out.println(bandera);
                 bandera++;
                 if (pregunta.getIdPregunta() == respuestaEntity.getObjPregunta().getIdPregunta()) {
-                    System.out.println("ENTRO");
                     respuestaEntity.setObjPregunta(pregunta);
                     break;
                 }

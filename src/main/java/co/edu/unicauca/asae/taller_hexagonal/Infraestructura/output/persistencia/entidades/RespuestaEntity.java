@@ -25,7 +25,6 @@ public class RespuestaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int idRespuesta;
 
-    // Preguntar si va este campo
     @Column(nullable = false, length = 256)
     private String enunciado;
 

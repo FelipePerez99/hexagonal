@@ -9,5 +9,5 @@ import co.edu.unicauca.asae.taller_hexagonal.dominio.modelos.Respuesta;
 
 public interface GestionarRespuestaCUIntPort {
     public List<Respuesta> registrarRespuestaCuestionario(Peticion objPeticion);
-    public Peticion consultarRespuestaDocente(Cuestionario objCuestionario, Docente objDocente);
+    public Peticion consultarRespuestaDocente(Cuestionario objCuestionario, String idDocente);
 }

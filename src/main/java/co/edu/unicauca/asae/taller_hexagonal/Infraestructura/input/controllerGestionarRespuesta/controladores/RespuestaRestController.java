@@ -54,15 +54,17 @@ public class RespuestaRestController {
 
     @GetMapping("/respuestasCuestionario")
     public ResponseEntity<PeticionDTORespuesta> listar(@RequestParam CuestionarioDTOPeticion cuestionario, @RequestParam DocenteDTOPeticion docente) {
-        ResponseEntity<PeticionDTORespuesta> objPeticion = new ResponseEntity<PeticionDTORespuesta>(
+        /*ResponseEntity<PeticionDTORespuesta> objPeticion = new ResponseEntity<PeticionDTORespuesta>(
                 objMapperPeticion.mapearDePeticionARespuesta(this.objGestionarRespuestaCUInt.consultarRespuestaDocente(objMapperCuestionario.mappearDePeticionACuestionario(cuestionario), objMapperDocente.mapearDePeticionADocente(docente))),
-                HttpStatus.OK);
-        return objPeticion;
+                HttpStatus.OK);*/
+        return null;
     }
 
     @GetMapping("/respuestaPorProfesor")
     public ResponseEntity<PeticionDTORespuesta> respuestaPorProfesor(@RequestParam String idDocente, @RequestBody CuestionarioDTOPeticion cuestionario) {
-        return null;
+        ResponseEntity<PeticionDTORespuesta> objPeticionRespuesta = new ResponseEntity<PeticionDTORespuesta>(
+            objMapperPeticion.mapearDePeticionARespuesta(objGestionarRespuestaCUInt.consultarRespuestaDocente(objMapperCuestionario.mappearDePeticionACuestionario(cuestionario), idDocente)), HttpStatus.OK);
+        return objPeticionRespuesta;
     }
     
     

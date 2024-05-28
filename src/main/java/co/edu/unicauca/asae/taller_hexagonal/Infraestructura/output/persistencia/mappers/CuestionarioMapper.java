@@ -28,7 +28,7 @@ public class CuestionarioMapper {
 
       // Mapeo de PreguntaEntity a Pregunta en la lista de preguntas del Cuestionario
       TypeMap<PreguntaEntity, Pregunta> preguntaMap = objMapper.emptyTypeMap(PreguntaEntity.class, Pregunta.class);
-      preguntaMap.addMappings(m -> m.skip(Pregunta::setObjCuestionario)).implicitMappings();
+      preguntaMap.addMappings(m -> m.skip(Pregunta::setObjCuestionario)).addMappings(m -> m.skip(Pregunta::setRespuestas)).implicitMappings();
       // Mapeo de CuestionarioEntity a Cuestionario
       TypeMap<CuestionarioEntity, Cuestionario> cuestionarioMap = objMapper.emptyTypeMap(CuestionarioEntity.class, Cuestionario.class);
       cuestionarioMap.implicitMappings();

@@ -33,16 +33,16 @@ public class RespuestaMapper {
       docenteMap.addMappings(m -> m.skip(Docente::setRespuestas)).implicitMappings();
       
       TypeMap<CuestionarioEntity, Cuestionario> cuestionarioMap = objMapper.emptyTypeMap(CuestionarioEntity.class, Cuestionario.class);
-      cuestionarioMap.addMappings(m -> m.skip(Cuestionario::setPreguntas)).implicitMappings();
+      cuestionarioMap.implicitMappings();
 
       TypeMap<TipoPreguntaEntity,TipoPregunta> TipoPreguntaMap = objMapper.emptyTypeMap(TipoPreguntaEntity.class, TipoPregunta.class);
       TipoPreguntaMap.addMappings(m -> m.skip(TipoPregunta::setPreguntas)).implicitMappings();
 
       TypeMap<PreguntaEntity, Pregunta> preguntaMap = objMapper.emptyTypeMap(PreguntaEntity.class, Pregunta.class);
-      preguntaMap.addMappings(m -> m.skip(Pregunta::setRespuestas)).implicitMappings();
+      preguntaMap.addMappings(m -> m.skip(Pregunta::setObjCuestionario)).implicitMappings();
       
       TypeMap<RespuestaEntity, Respuesta> respuestaMap = objMapper.emptyTypeMap(RespuestaEntity.class, Respuesta.class);
-      respuestaMap.implicitMappings();
+      respuestaMap.addMappings(m -> m.skip(Respuesta::setObjPregunta)).addMappings(m -> m.skip(Respuesta::setObjDocente)).implicitMappings();
 
       TypeMap<Respuesta, RespuestaEntity> respuestaMap2 = objMapper.emptyTypeMap(Respuesta.class, RespuestaEntity.class);
       respuestaMap2.implicitMappings();
